@@ -87,8 +87,8 @@ class Clinic(Document):
 
 class Review(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    createdate = DateTimeField(default=dt.datetime.utcnow)
-    modifydate = DateTimeField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
     text = StringField()
     star = StringField()
     recommendation = StringField()

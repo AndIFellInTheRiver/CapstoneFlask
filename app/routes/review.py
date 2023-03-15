@@ -94,7 +94,7 @@ def reviewNew():
     # the form or the form had an error and the user is sent to a blank form. Form errors are 
     # stored in the form object and are displayed on the form. take a look at reviewform.html to 
     # see how that works.
-    return render_template('reviewform.html', forms=form)
+    return render_template('reviewform.html', form=form)
 
 
 @app.route('/review/edit/<reviewID>', methods=['GET', 'POST'])
