@@ -6,37 +6,30 @@
         <form method=post>
             {{ form.hidden_tag() }}
             <p>
-                {{ form.subject.label }} <br>
-                {{ form.subject(size=64) }}
+                {{ form.star.label }} <br>
+                {{ form.star() }}
                 <!--List the errors for this field-->
-                {% for error in form.subject.errors %}
+                {% for error in form.star.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
-                {{ form.content.label }} <br>
-                {{ form.content(cols=64, rows=10) }}
+                {{ form.text.label }} <br>
+                {{ form.text(cols=64, rows=10) }}
                 <!--List the errors for this field-->
-                {% for error in form.content.errors %}
+                {% for error in form.text.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
-                {{ form.tag.label }} <br>
-                {{ form.tag(size=64) }}
+                {{ form.recommendation.label }} <br>
+                {{ form.recommmendation() }}
                 <!--List the errors for this field-->
-                {% for error in form.subject.errors %}
+                {% for error in form.recommendation.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>
-                {{ form.question.label }} <br>
-                {{ form.question() }}
-                <!--List the errors for this field-->
-                {% for error in form.subject.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </p>
+
             <p>
                 {{form.submit()}}
             </p>

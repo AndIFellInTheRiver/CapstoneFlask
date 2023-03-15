@@ -13,12 +13,15 @@ class ProfileForm(FlaskForm):
     lname = StringField('Last Name', validators=[DataRequired()]) 
     image = FileField("Image") 
     submit = SubmitField('Post')
+    role = SelectField('role', choices=[("Teahcer","Teacher"),("Student", "Student"),("Visitor","Visitor")])
+    gender = SelectField('gender', choices=[("Male","Male"),("Female","Female")])
 
 class BlogForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Blog', validators=[DataRequired()])
     tag = StringField('Tag', validators=[DataRequired()])
     submit = SubmitField('Blog')
+    question = SelectField('Question',choices=[("Question","Question"),("Comment","Comment")] )
 
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
@@ -31,4 +34,10 @@ class ClinicForm(FlaskForm):
     state = StringField('State', validators=[DataRequired()])
     zipcode = StringField('Zipcode',validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class ReviewForm(FlaskForm):
+    star =  SelectField('Star', choices= [("1","1"),("2","2"),("3","3"),("4","4"),("5","5")] )
+    recommendation = SelectField ("Recommend", choices=[("Recommend","Recommend"),("Not Recommend","Not Recommend")])
+    text = TextAreaField('Text', validators= [DataRequired()])
     submit = SubmitField('Submit')

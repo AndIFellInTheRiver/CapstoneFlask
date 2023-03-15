@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if review %}
+    {{moment(review.create_date).calendar()}} by {{review.author.fname}} {{review.author.lname}} 
+    {% if review.modifydate %}
+        modified {{moment(review.modifydate).calendar()}}
+    {% endif %}
+    <br>
+    {% if review.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="Delete Review" href="/review/delete/{{review.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Edit Review" href="/review/edit/{{review.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+
+    <h1 class="display-5">{{review.subject}}</h1>
+    <p class="fs-3 text-break">
+        {% if review.author.image %}
+            <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(review.author.image.read())}}">
+        {% endif %}
+            {{review.star}} <br>
+            {{review.text}} <br>
+            {{review.recommendation}}
+
+    </p>
+
+{% else %}
+    <h1 class="display-5">No Review</h1>
+{% endif %}
+
+{% endblock %}

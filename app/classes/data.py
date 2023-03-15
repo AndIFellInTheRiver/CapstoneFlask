@@ -31,6 +31,10 @@ class User(UserMixin, Document):
     email = EmailField()
     image = FileField()
     prononuns = StringField()
+    role = StringField()
+    gender = StringField()
+    
+    
 
     meta = {
         'ordering': ['lname','fname']
@@ -41,6 +45,7 @@ class Blog(Document):
     subject = StringField()
     content = StringField()
     tag = StringField()
+    question = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
 
@@ -76,6 +81,18 @@ class Clinic(Document):
     lat = FloatField()
     lon = FloatField()
     
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Review(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    createdate = DateTimeField(default=dt.datetime.utcnow)
+    modifydate = DateTimeField()
+    text = StringField()
+    star = StringField()
+    recommendation = StringField()
+
     meta = {
         'ordering': ['-createdate']
     }
